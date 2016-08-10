@@ -12,6 +12,18 @@ class Config {
         
     }
 
+    public static function getInstance() {
+        if (self::$_instance == NULL) {
+            self::$_instance = new \GRG\Config();
+        }
+
+        return self::$_instance;
+    }
+
+    public function getConfigFolder() {
+        return $this->_configFolder;
+    }
+
     public function setConfigFolder($configFolder) {
         if (!$configFolder) {
             throw new \Exception('Empty config folder path');
@@ -26,6 +38,11 @@ class Config {
             // Clear old config data.
             $this->_configArray = array();
             $this->_configFolder = $_configFolder . DIRECTORY_SEPARATOR;
+            $nameSpaces = $this->app['namespaces'];
+            // TODO: Set namespaces.
+            if (is_array($nameSpaces)) {
+//                \GRG\Loader::registerNamespace($nameSpaces);
+            }
         } else {
             throw new \Exception('Configuration directory read error: ' . $_configFolder);
         }
@@ -44,8 +61,7 @@ class Config {
         ) {
 //            var_dump(basename($_file));die;
             $_basename = explode('.php', basename($_file))[0];
-            include $_file;
-            $this->_configArray[$_basename] = $cnf;
+            $this->_configArray[$_basename] = include $_file;
         } else {
             throw new \Exception('Config file read error: ' . $path);
         }
@@ -63,11 +79,4 @@ class Config {
         return NULL;
     }
 
-    public static function getInstance() {
-        if (self::$_instance == NULL) {
-            self::$_instance = new \GRG\Config();
-        }
-
-        return self::$_instance;
-    }
 }
