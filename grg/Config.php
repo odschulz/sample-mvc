@@ -41,7 +41,7 @@ class Config {
             $nameSpaces = $this->app['namespaces'];
             // TODO: Set namespaces.
             if (is_array($nameSpaces)) {
-//                \GRG\Loader::registerNamespace($nameSpaces);
+                \GRG\Loader::registerNamespaces($nameSpaces);
             }
         } else {
             throw new \Exception('Configuration directory read error: ' . $_configFolder);
