@@ -9,14 +9,26 @@ class FrontController {
     private $nameSpace = NULL;
     private $controller = NULL;
     private $method = NULL;
+    private $router = NULL;
 
     public function __construct() {
 
     }
 
+    public function getRouter() {
+        return $this->router;
+    }
+
+    public function setRouter(\GRG\Routers\iRouter $router) {
+        $this->router = $router;
+    }
+
     public function dispatch() {
-        $router = new \GRG\Routers\DefaultRouter();
-        $_uri = $router->getURI();
+        if ($this->router == NULL) {
+            throw new \Exception('No valid router found', 500);
+        }
+
+        $_uri = $this->router->getURI();
         $routes = \GRG\App::getInstance()->getConfig()->routes;
 
         if (!is_array($routes) || count($routes) < 1) {
