@@ -19,7 +19,7 @@ class FrontController {
         return $this->router;
     }
 
-    public function setRouter(\GRG\Routers\iRouter $router) {
+    public function setRouter(\GRG\Routers\IRouter $router) {
         $this->router = $router;
     }
 

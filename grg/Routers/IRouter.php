@@ -4,6 +4,6 @@
 namespace GRG\Routers;
 
 
-interface iRouter {
+interface IRouter {
     public function getURI();
 }
