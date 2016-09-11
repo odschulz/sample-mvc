@@ -85,13 +85,10 @@ class FrontController {
             }
         }
 
-        $f = $this->nameSpace . '\\' . ucfirst($this->controller);
-        $newController = new $f();
-        var_dump($newController);
-
-        echo $this->nameSpace . '<br>';
-        echo $this->controller . '<br>';
-        echo $this->method . '<br>';
+        // TODO:
+        $className = $this->nameSpace . '\\' . ucfirst($this->controller);
+        $newController = new $className();
+        $newController->{$this->method}();
     }
 
     public static function getInsance() {

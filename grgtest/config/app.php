@@ -1,6 +1,6 @@
 <?php
 
-$cnf['namespaces']['Controllers'] = 'C:\xampp\htdocs\code\sample_mvc\grgtest\Controllers\\';
+$cnf['namespaces']['Controllers'] = 'C:\xampp\htdocs\code\sample_mvc\grgtest\controllers\\';
 $cnf['default_controller'] = 'index';
 $cnf['default_method'] = 'index';
 

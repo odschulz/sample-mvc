@@ -15,7 +15,3 @@ $app = \GRG\App::getInstance();
 //var_dump($a);
 
 $app->run();
-
-$app->getSession()->counter2 +=1;
-echo $app->getSession()->counter2;
-

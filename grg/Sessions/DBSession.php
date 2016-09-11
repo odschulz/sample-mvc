@@ -70,7 +70,6 @@ class DBSession extends \GRG\DB\SimpleDB implements \GRG\Sessions\ISession {
 
     private function _validateSession() {
         if ($this->sessionId) {
-            echo $_SERVER['REQUEST_TIME'] + $this->lifetime;
             $query = $this->prepare(
                 'SELECT * FROM ' . $this->tableName . ' WHERE sessid = ? AND valid_until <= ?',
                 array(
